@@ -5,8 +5,6 @@
 ## 功能介绍：
 在任意网站按下快捷键，**Alt+F/Option+F**，即可唤起快搜界面。如果访问的是脚本内置的网站，脚本会自动提取搜索关键词，切换网站时，不需要重复输入了~
 
-
-
 ## 快捷键介绍
 - Alt+W: 百度百科
 - Alt+E: 百度翻译
@@ -20,3 +18,5 @@
 1. 快搜网站后续版本可以自定义设置
 2. 快捷按键可自定义设置
 3. 脚本插件化，以适配更多功能。比如：集成书签管理功能等
+
+[![pic](https://cdn.statically.io/gh/xanthella/onestepsearch/master/image/onestep.png "pic")](https://cdn.statically.io/gh/xanthella/onestepsearch/master/image/onestep.png "pic")
