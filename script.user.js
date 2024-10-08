@@ -1481,7 +1481,7 @@
 		    homeLink.id = 'qs-main-help-info-home';
 		    homeLink.className = 'qs-main-help-info-item';
 		    homeLink.textContent = '主页';
-		    homeLink.href = 'https://github.com/eyinwei/Quick_Search';
+		    homeLink.href = 'https://github.com/Xanthella/OnestepSearch';
 		    homeLink.target = '_blank';
 		    helpInfoBox.appendChild(homeLink);
 			
@@ -1490,7 +1490,7 @@
 		    helpLink.id = 'qs-main-help-info-help';
 		    helpLink.className = 'qs-main-help-info-item';
 		    helpLink.textContent = '帮助';
-		    helpLink.href = 'https://github.com/eyinwei/Quick_Search/README.md';
+		    helpLink.href = 'https://github.com/Xanthella/OnestepSearch/blob/main/README.md';
 		    helpLink.target = '_blank';
 		    helpInfoBox.appendChild(helpLink);
 					
