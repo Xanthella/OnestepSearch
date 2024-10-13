@@ -2312,35 +2312,38 @@
 		
 		// 双击触发
 		let altPressedCount = 0;
-		let timeoutId=null;
-		let qsKeyComplete = false;
+		let timeoutId = null;
+		let keyPressed = false; // 标记按键是否已经被按住
+		
 		window.addEventListener('keydown', function (event) {
-			if(!qsPageLock && (
-					(event.code==='AltLeft' || event.code==='AltRight') ||
-					(event.code==='ControlLeft' || event.code==='ControlRight')
-			)){
-				altPressedCount ++;
-				if (altPressedCount === 1) {
-					timeoutId = setTimeout(() => { // 第一次按下，设置超时检测第二次按下
-						altPressedCount = 0;
-					}, 500);
-				} else if (altPressedCount === 2) {
-					if(timeoutId != null){
-						clearTimeout(timeoutId);
-						timeoutId = null;
-					}
-					altPressedCount = 0;
-					event.preventDefault();
-					showOrHideMainBox();
-				}
-			}else{
-				altPressedCount = 0;
-				if(timeoutId != null){
-					clearTimeout(timeoutId);
-					timeoutId = null;
-				}
-			}
-		}, true);
+		    // 检查是否是 Alt 或 Ctrl 键，并且键没有被按住
+		    if (!qsPageLock && !keyPressed && (event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'ControlLeft' || event.code === 'ControlRight')) {
+		        keyPressed = true; // 标记按键已按下
+		        altPressedCount++; // 增加按键按下次数
+		
+		        if (altPressedCount === 1) {
+		            // 设置定时器，500毫秒内没有按下第二次时重置计数
+		            timeoutId = setTimeout(() => {
+		                altPressedCount = 0;
+		            }, 500);
+		        } else if (altPressedCount === 2) {
+		            // 双击检测成功，执行操作
+		            clearTimeout(timeoutId); // 清除定时器
+		            altPressedCount = 0; // 重置按键计数
+		            timeoutId = null;
+		
+		            event.preventDefault(); // 阻止默认行为
+		            showOrHideMainBox(); // 执行相应操作
+		        }
+		    }
+		});
+		
+		window.addEventListener('keyup', function (event) {
+		    // 当按键抬起时重置状态
+		    if (event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'ControlLeft' || event.code === 'ControlRight') {
+		        keyPressed = false; // 标记按键已抬起
+		    }
+		});
 		
 		//油猴菜单触发
 		GM_registerMenuCommand("打开快搜窗口",function(){
